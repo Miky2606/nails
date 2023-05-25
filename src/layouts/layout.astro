@@ -1,4 +1,5 @@
 ---
+import Footer from "../components/footer.astro";
 import Navbar from "../components/navbar.astro";
 
 ---
@@ -10,8 +11,9 @@ import Navbar from "../components/navbar.astro";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
      <link
-    rel="stylesheet"
+    rel="preload"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  
   />
  
   <style is:global>
@@ -24,12 +26,14 @@ import Navbar from "../components/navbar.astro";
         font-family: 'Nails';
         src: url('/fonts/beauty.woff2') format('woff2'); 
         font-weight: 500;
+        font-display: swap;
           
     }
     @font-face{
         font-family: 'Nails-2';
         src: url('/fonts/beauty-2.woff2') format('woff2'); 
         font-weight: 500;
+        font-display: swap;
           
     
 
@@ -38,31 +42,16 @@ import Navbar from "../components/navbar.astro";
 </style>
 </head>
 <body>
+  <head>
+    <Navbar/>
+  </head>
     <main >
-        <Navbar/>
+        
         <slot/>
     </main>
+    <Footer/>
 
-    <script>
-    const observer = new IntersectionObserver((e)=>{
-      e.forEach((obs)=>{
-        if(obs.isIntersecting){
-            obs.target.classList.add('animate__fadeInUp')
-            obs.target.classList.add('animate__animated')
 
-        }    
-        
-      })
-    })
-   
-    const hidden = document.querySelectorAll('.sect')
-    hidden.forEach((e)=>{
-        console.log(e)
-        observer.observe(e)
-    } 
-)
-
-</script>
 </body>
 </html>
 
